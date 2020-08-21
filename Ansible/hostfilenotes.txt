@@ -1,0 +1,21 @@
+* ansible hosts file:
+- this is where we get out list of hosts from that we use in
+the playbooks
+
+- the hosts file can be configured by us and might even need to be
+manually created
+
+- The hosts file is a our inventory list: all the machines
+involved in task executions
+----------------------------
+- Hosts file format:
+10.24.0.100
+    [webservers]
+    10.24.0.1
+    10.24.0.2
+
+    [databases]
+    10.24.0.7
+    10.24.0.8
+-----------------------------
+

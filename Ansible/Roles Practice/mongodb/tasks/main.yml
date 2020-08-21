@@ -1,0 +1,22 @@
+---
+# tasks file for mongodb (4)
+- name: MongoDB - Import public key
+  apt_key:
+    keyserver: hkp://keyserver.unbuntu.com:80
+    id: EA312927
+
+- name: MongoDB - Add repository
+  apt_repository:
+    filename: '/etc/apt/sources.list.d/mongodb-org-3.2.list'
+    repo: 'deb http://repo.mongodb.org/apt/unbuntu trusty/mongodb-org/3.2 multiverse'
+    state: present
+    update_cache: yes
+
+- name: MongoDB - Install MongoDB
+  apt:
+    name: mongodb-org
+    state: present
+    update-cache: yes
+
+- name: Start mongod
+  shell: "mongod &"

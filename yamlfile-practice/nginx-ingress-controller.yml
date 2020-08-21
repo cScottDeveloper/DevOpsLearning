@@ -1,0 +1,26 @@
+# works with and uses configmap object file
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-ingress-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-ingress
+    template:
+      metadata:
+        labels:
+          name: nginx-ingress 
+      spec:
+        containers:
+        # a specific version of nginx that serves as a ingress controller
+          - name: nginx-ingress-controller
+            image: quay.io/kubernetes-ingress-controller:0.21.0
+        # has its own required arguments
+        # must pass name
+        args:
+          - /nginx-ingress-controller
+          - --configmap=$ (POD_NAMESPACE)/nginx-configuration
+          # 13:00 through the video will finish tomorrow to continue this file
+          # https://www.youtube.com/watch?v=VicH6KojwCI&list=PL2We04F3Y_43dAehLMT5GxJhtk3mJtkl5&index=12

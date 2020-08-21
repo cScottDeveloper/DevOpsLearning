@@ -1,0 +1,9 @@
+multilinestring: |
+  this is a multiline string
+  this is the next line
+  final line
+
+singlelinestring: >
+  this is a multiline string
+  this is the next line
+  final line

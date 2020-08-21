@@ -1,0 +1,27 @@
+##################
+# This file is linked with the pod-definition file
+##################
+apiVersion: v1
+# the kind of file which we are creating.
+kind: Service
+# some quick information on file
+metadata:
+  name: myapp-service
+# most important part of file.
+spec:
+# this is the type of service that we are creating
+# it could be nodePort, clusterIP, or loadbalancer
+  type: NodePort
+  ports:
+  # if no target port provided it is assumed to be the same as port.
+  # ports is an array and the - indicates the first element in the array.
+    - targetPort: 80
+      port: 80
+      # can be any number in range: 30000 <--> 32767
+      # if not provided a free port within the range will be allocated
+      nodePort: 30008
+  # used to connect the pod to the service. Simply input the label data from
+  # the pod-definition file to the selector section. 
+  selector:
+    app: myapp
+    type: front-end

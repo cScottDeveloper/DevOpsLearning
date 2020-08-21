@@ -1,0 +1,2 @@
+# to use env in yaml put a $ before your var name
+# you can use json or yaml format to configure kubernetes files

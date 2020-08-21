@@ -1,0 +1,23 @@
+# top level/ required fields of file --> 
+# apiVersion, kind, metadata, and spec
+# since we are working with pods we can set value to v1
+# Service = v1
+# ReplicaSet = apps/v1
+# Deployment = apps/v1
+apiVersion: v1
+# type of object we are trying to create
+kind: Pod
+# data about the object in form of a dictionary
+metadata:
+  # name and labels must remain siblings and have the same amount of spaces.
+  name: myapp-pod
+  labels:
+    # app and type of children of labels.
+    app: myapp
+    type: front-end
+# where you specify the image we want to use, different for different objects
+spec:
+  # list of the multiple containers we can use
+  containers:
+  - name: nginx-container
+    image: nginx
